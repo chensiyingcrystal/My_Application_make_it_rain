@@ -2,6 +2,7 @@ package edu.northeastern.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.icu.text.NumberFormat;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -13,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button makeItRain;
     private TextView moneyValue;
     private Button showInfo;
+    private int moneyCounter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,7 +36,11 @@ public class MainActivity extends AppCompatActivity {
     }
     //another way to set onClick events for the button
     public void showMoney(View view) {
-        Log.d("MainActivity", "onClick: Make it rain ");
+        //format number into currency
+        NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
+        moneyCounter += 100;
+        moneyValue.setText(numberFormat.format(moneyCounter));
+        //Log.d("MIR", "onClick: " + moneyCounter);
     }
 
 
